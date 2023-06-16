@@ -12,7 +12,7 @@ const BasketCard = ({cart}) => {
   // const quantityBasket = useSelector(state => state.cartReducer.count)
   const dispatch = useDispatch()
   const [quantity, setQuantity] = useState(cart.count)
-
+  console.log(quantity)
   const handleEdit = (id, count) => {
     dispatch(postCart(id, count));
 
@@ -30,6 +30,10 @@ const BasketCard = ({cart}) => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  const test = (a,b)=>{
+    setQuantity(quantity+1);
+    handleEdit(a,b)
+  }
 
   return (
 <>
@@ -41,10 +45,10 @@ const BasketCard = ({cart}) => {
           </td>
           <td>{cart.productId.price} DT</td>
           <td>
-            <Button variant="outline-primary" onClick={() => setQuantity(quantity + 1)}> + </Button>
+            <Button variant="outline-primary" onClick={() =>test(cart.productId , quantity)}> + </Button>
             {/* {quantity} */}
-            <input className="counter" value={quantity} onChange={() => handleEdit(cart.productId, quantity.target.value)} />
-            <Button variant="outline-primary" onClick={() => setQuantity(quantity + 1)} disabled={quantity === 1}> - </Button>
+            <input className="counter" value={quantity} onChange={(e) => { handleEdit(cart.productId, e.target.value);setQuantity(e.target.value)}  }/>
+            <Button variant="outline-primary" onClick={() => {setQuantity(quantity - 1); handleEdit(cart.productId, quantity) }} disabled={quantity === 1}> - </Button>
           
           </td>
           <td>{handleTotal()} DT</td>

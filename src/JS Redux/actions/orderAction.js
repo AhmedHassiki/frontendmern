@@ -9,7 +9,7 @@ export const createOrder = (checkoutOrder) => async (dispatch) => {
                 "x-auth-token": localStorage.getItem('token')
             }
         };
-    const { data } = await axios.post("/api/order", checkoutOrder, config);
+    const { data } = await axios.post("https://mernbackend-p7f6.onrender.com/api/order", checkoutOrder, config);
     dispatch({
     type: CREATE_ORDER,
     payload: data.order,
@@ -35,7 +35,7 @@ export const getOrder = () => async(dispatch) => {
                 "x-auth-token": localStorage.getItem('token')
             }
         };
-    const order = await axios.get("/api/order/", config);
+    const order = await axios.get("https://mernbackend-p7f6.onrender.com/api/order/", config);
     dispatch({
         type : GET_ORDER,
         payload : order.data.response
