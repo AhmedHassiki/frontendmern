@@ -18,7 +18,7 @@ import axios from 'axios';
 export const userRegister = (formData) => async(dispatch) => {
     dispatch(loadingUser())
     try {
-        const response = await axios.post('/api/auth/register', formData)
+        const response = await axios.post('https://mernbackend-p7f6.onrender.com/api/auth/register', formData)
         console.log(response)
         dispatch({
             type : USER_REGISTER,
@@ -42,7 +42,7 @@ export const userRegister = (formData) => async(dispatch) => {
 export const userLogin = (formData) => async(dispatch) => {
     dispatch(loadingUser())
     try {
-        const response = await axios.post('/api/auth/login', formData)
+        const response = await axios.post('https://mernbackend-p7f6.onrender.com/api/auth/login', formData)
         console.log(response)
         dispatch({
             type : USER_LOGIN,
@@ -71,7 +71,7 @@ export const getAuthUser = () => async(dispatch) =>{
                 "x-auth-token": localStorage.getItem('token')
             }
         }
-        const result = await axios.get("/api/auth/",config)
+        const result = await axios.get("https://mernbackend-p7f6.onrender.com/api/auth/",config)
         dispatch(
             {type: GET_AUTH_USER,
             payload : result.data} 
