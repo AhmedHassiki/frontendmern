@@ -39,10 +39,10 @@ export const fetchCart = () => async(dispatch) => {
   }
 };
 
-export const loading = (dispatch) => {
-  return{
+export const loading =()=> (dispatch) => {
+  dispatch({
     type:LOAD_CART
-  }
+  })
 }
 
 export const deleteCart = (id) => async(dispatch)=>{

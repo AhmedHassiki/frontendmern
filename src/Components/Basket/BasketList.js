@@ -76,7 +76,7 @@ const BasketList = () => {
       <h2>Mon panier</h2>
 
       <div style={{ display: "flex" }}>
-        
+        <div>
         <Table className="table" style={{ margin: "20px", padding: "20px" }}>
           <thead>
             <tr>
@@ -99,7 +99,7 @@ const BasketList = () => {
           )}
 
         </Table>
-
+        </div>
         <Form>
         <h5> Montant total : {total()}DT </h5>
           <Form.Group className="mb-3" controlId="formBasicEmail">
