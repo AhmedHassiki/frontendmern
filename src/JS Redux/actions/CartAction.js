@@ -11,7 +11,7 @@ export const postCart = (id, count) => async (dispatch) => {
           "x-auth-token": localStorage.getItem('token')
       }
     };
-    const { data } = await axios.post('/api/cart', { productId: id, count }, config);
+    const { data } = await axios.post('https://mernbackend-p7f6.onrender.com/api/cart', { productId: id, count }, config);
     dispatch({ type: ADD_TO_CART, payload: data.cart } );
     // dispatch(fetchCart())
   } catch (error) {
@@ -27,7 +27,7 @@ export const fetchCart = () => async(dispatch) => {
         "x-auth-token": localStorage.getItem('token')
       }
     };
-    let result = await axios.get('/api/cart', config);
+    let result = await axios.get('https://mernbackend-p7f6.onrender.com/api/cart', config);
     // console.log("result.data.response : ", result.data.response)
     dispatch({ 
       type: FETCH_CART_SUCCESS, 
@@ -48,7 +48,7 @@ export const loading =()=> (dispatch) => {
 export const deleteCart = (id) => async(dispatch)=>{
   try {
       // console.log("id:" , id)
-      await axios.delete(`/api/cart/${id}`);
+      await axios.delete(`https://mernbackend-p7f6.onrender.com/api/cart/${id}`);
       dispatch(fetchCart())
   } catch (error) {
       console.log(error)
