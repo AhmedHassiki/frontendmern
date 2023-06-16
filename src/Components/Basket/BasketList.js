@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import BasketCard from "./BasketCard";
-import { Button, Form, Spinner, Table } from "react-bootstrap";
+import { Button, Form, Spinner, Table, Container, Row, Col } from "react-bootstrap";
 import { fetchCart } from "../../JS Redux/actions/CartAction";
 import { useNavigate } from "react-router-dom";
 import { createOrder } from "../../JS Redux/actions/orderAction";
@@ -72,35 +72,37 @@ const BasketList = () => {
 
 
   return (
-    <div>
-      <h2>Mon panier</h2>
+    <>
+      
+<Container>
+<h2>Mon panier</h2>
+<Row>
+  <Col xs={9}>
+    <Table className="table" >
+            <thead>
+              <tr>
+                <th >Produits</th>
+                <th >Prix</th>
+                <th >Quantité</th>
+                <th >Total</th>
+                <th >Update</th>
+                <th >Delete</th>
+              </tr>
+            </thead>
 
-      <div style={{ display: "flex" }}>
-        <div>
-        <Table className="table" style={{ margin: "20px", padding: "20px" }}>
-          <thead>
-            <tr>
-              <th >Produits</th>
-              <th >Prix</th>
-              <th >Quantité</th>
-              <th >Total</th>
-              <th >Update</th>
-              <th >Delete</th>
-            </tr>
-          </thead>
+            {loading ? (
+              <Spinner animation="border" variant="danger" />
+            ) : basket.length === 0 ? (
+              <h2>There's no cart in the basket</h2>
+              
+            ) : (
+              basket.map((el) => <BasketCard key={el._id} cart={el} />)
+            )}
 
-          {loading ? (
-            <Spinner animation="border" variant="danger" />
-          ) : basket.length === 0 ? (
-            <h2>There's no cart in the basket</h2>
-            
-          ) : (
-            basket.map((el) => <BasketCard key={el._id} cart={el} />)
-          )}
-
-        </Table>
-        </div>
-        <Form>
+    </Table>
+  </Col>
+  <Col xs={3}>
+  <Form>
         <h5> Montant total : {total()}DT </h5>
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Shipping Address</Form.Label>
@@ -133,26 +135,25 @@ const BasketList = () => {
               required
             />
           </Form.Group>
-          <label>
-            <input
-              type="checkbox"
-              checked={newOrder.checkpayment === "false"}
-              onChange={handleOrder}
-              name="checkpayment"
-              value={false}
-            />
-            &nbsp;Livraison par Email
-          </label>
-          <label>
-            <input
-              type="checkbox"
-              checked={newOrder.checkpayment ==="true"}
-              name="checkpayment"
-              onChange={handleOrder}
-              value={true}
-            />
-            &nbsp;Livraison à domicile + 7DT
-          </label>
+          <Form.Label>
+              <Form.Check
+                type="checkbox"
+                checked={newOrder.checkpayment === "false"}
+                onChange={handleOrder}
+                name="checkpayment"
+                value={false}
+              />&nbsp;Livraison par Email
+            </Form.Label>
+            <Form.Label>
+              <Form.Check
+                type="checkbox"
+                checked={newOrder.checkpayment ==="true"}
+                name="checkpayment"
+                onChange={handleOrder}
+                value={true}
+              />
+              &nbsp;Livraison à domicile + 7DT
+            </Form.Label>
 
           {/* <Form.Check // prettier-ignore
             type="switch"
@@ -166,9 +167,13 @@ const BasketList = () => {
             id="disabled-custom-switch"
           /> */}
         </Form>
-      </div>
-        <Button onClick={() => sendOrder()} disabled={!isFormValid()}>Confirmer ma commande</Button>
-    </div>
+<Button onClick={() => sendOrder()} disabled={!isFormValid()}>Confirmer ma commande</Button>
+  </Col>
+</Row>
+</Container>
+      
+        
+    </>
   );
 };
 

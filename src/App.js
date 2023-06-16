@@ -97,8 +97,8 @@ useEffect(()=>{
         <Route path="/quisommesnous" element={<QuiSommesNous />} />
         <Route path="/mention" element={<Mention />} />        
         <Route path="/desc/:id" element={<ProductDescription />}/>
-        <Route path="/panier" element={<BasketList />} />
-        <Route path="/order" element={<OrderList />} />
+        <Route path="/panier" element={<PrivateRoute><BasketList /></PrivateRoute>} />
+        <Route path="/order" element={<PrivateRoute><OrderList /></PrivateRoute>} />
       </Routes>
       <Footer />
 
