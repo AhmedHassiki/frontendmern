@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux"
 import OrderCard from "./OrderCard"
-import { Spinner, Table } from "react-bootstrap"
+import { Col, Container, Row, Spinner, Table } from "react-bootstrap"
 import { getOrder } from "../../JS Redux/actions/orderAction"
 import { useEffect } from "react"
 
@@ -17,17 +17,22 @@ const OrderList = () => {
 
 
   return (
-    <div>
-      <h2>Liste des ordres</h2>
-        <Table className="table" style={{ margin: "20px", padding: "20px" }}>
+    <>
+    <Container>
+    <h3>Liste des ordres</h3>
+      <Row>
+        <Col xs={12} md={9}>
+        <div className="table-responsive">
+
+        <Table className="table">
             <thead>
               <tr>
                 <th>Nom d'utilisateur</th>
                 <th>Quantité </th>
                 <th>Téléphone </th>
                 <th>Total</th>
-                <th>E-mail </th>
-                <th>Date d'achat </th>
+                {/* <th>E-mail </th> */}
+                {/* <th>Date d'achat </th> */}
               </tr>
             </thead>
               {loading ? (
@@ -37,9 +42,14 @@ const OrderList = () => {
               ) : (
                 orders.map((el) => <OrderCard key={el._id} order={el} />)
               )}
-              
         </Table>
-    </div>
+        </div>
+        </Col>
+      </Row>
+    </Container>
+    
+        
+        </>
   )
 }
 

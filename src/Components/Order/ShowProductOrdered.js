@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { Button, Modal, Table } from 'react-bootstrap';
-import { useSelector } from 'react-redux';
 
 const ShowProductOrdered = ({order}) => {
 
@@ -12,7 +11,7 @@ const ShowProductOrdered = ({order}) => {
     console.log("my order", products)
 return (
     <>
-    <Button variant="primary" onClick={handleShow}>
+    <Button variant="outline-primary" size="sm" onClick={handleShow}>
         Click to see products bought
         </Button>
 

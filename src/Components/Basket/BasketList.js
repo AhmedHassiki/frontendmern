@@ -72,12 +72,12 @@ const BasketList = () => {
 
 
   return (
-    <>
+    
       
 <Container>
 <h2>Mon panier</h2>
 <Row>
-  <Col xs={9}>
+  <Col xs={12} md={9}>
     <Table className="table" >
             <thead>
               <tr>
@@ -101,7 +101,7 @@ const BasketList = () => {
 
     </Table>
   </Col>
-  <Col xs={3}>
+  <Col xs={12} md={3}>
   <Form>
         <h5> Montant total : {total()}DT </h5>
           <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -171,9 +171,6 @@ const BasketList = () => {
   </Col>
 </Row>
 </Container>
-      
-        
-    </>
   );
 };
 
