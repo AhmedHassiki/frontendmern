@@ -81,7 +81,8 @@ useEffect(()=>{
           )
         }
       {/* {basket.map(el=><Link to="/panier"><Button className="border-0 bg-transparent" variant="none" style={{color: "white"}}>Panier {el.count}  </Button></Link>)} */}
-      <Link to="/panier"><Button className="border-0 bg-transparent" variant="none" style={{color: "white"}}>Panier</Button></Link>
+
+      {!auth ? <></> : (      <Link to="/panier"><Button className="border-0 bg-transparent" variant="none" style={{color: "white"}}>Panier {basket ? basket.length : <></>} </Button></Link>)}
           </Nav>
         </Navbar.Collapse>
       </Container>

@@ -21,7 +21,7 @@ const OrderList = () => {
     <Container>
     <h3>Liste des ordres</h3>
       <Row>
-        <Col xs={12} md={9}>
+        <Col xs={12} md={12}>
         <div className="table-responsive">
 
         <Table className="table">

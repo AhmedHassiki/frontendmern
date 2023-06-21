@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Button, Modal, Table } from 'react-bootstrap';
 
 const ShowProductOrdered = ({order}) => {
+  console.log("order : test : " , order)
 
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
