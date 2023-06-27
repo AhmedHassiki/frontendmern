@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import Home from './screen/Home';
 import Add from './screen/Add';
 import { Button, Container, Nav, Navbar } from 'react-bootstrap';
@@ -23,17 +23,10 @@ const dispatch = useDispatch()
 const editFalse = () => dispatch(toggleFalse())
 const userAuth = useSelector((state)=>state.authReducer.user)
 const auth = useSelector((state)=>state.authReducer.isAuth)
-
 const basket = useSelector(state=>state.cartReducer.basket)
-
-const [message, setMessage] = useState("");
-
-
-const logOut = () => {
-  dispatch(logout());
-  navigate('/')
-}
-
+const logOut = () => { dispatch(logout());
+                      navigate('/')
+                      }
 const getUser = async() =>{
   await dispatch(getAuthUser());
 }
@@ -43,12 +36,6 @@ useEffect(()=>{
   } 
 },[])
 
-// useEffect(() => {
-//   fetch("https://authentikey-mern-app.onrender.com/")
-//     .then((res) => res.json())
-//     .then((data) => setMessage(data.message));
-// },[]);
-
 // ! this use effect i've used it to refresh and get basket.length in front of Panier in the navbar
 useEffect(()=>{
   dispatch(fetchCart())
@@ -56,8 +43,6 @@ useEffect(()=>{
 
   return (
     <div>
-
-      {/* {message} */}
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" sticky="top">
       <Container>
         <Navbar.Brand href="/">AuthentiKey</Navbar.Brand>
@@ -80,16 +65,12 @@ useEffect(()=>{
           </>
           )
         }
-      {/* {basket.map(el=><Link to="/panier"><Button className="border-0 bg-transparent" variant="none" style={{color: "white"}}>Panier {el.count}  </Button></Link>)} */}
 
       {!auth ? <></> : (      <Link to="/panier"><Button className="border-0 bg-transparent" variant="none" style={{color: "white"}}>Panier {basket ? basket.length : <></>} </Button></Link>)}
           </Nav>
         </Navbar.Collapse>
       </Container>
     </Navbar>
-      {/* <Link to="/"><Button>Home</Button></Link> */}
-      {/* <Link to="/add" onClick={editFalse}><Button>Add</Button></Link> */}
-      {/* {(isAuth && user.role==="admin") ? <Link to="/add" onClick={editFalse}><Button>Add</Button></Link> : <></>} */}
       
       <Routes>
         <Route path="/" element={<Home />} />
@@ -102,7 +83,6 @@ useEffect(()=>{
         <Route path="/order" element={<PrivateRoute><OrderList /></PrivateRoute>} />
       </Routes>
       <Footer />
-
     </div>
   )
 }

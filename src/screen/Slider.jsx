@@ -7,8 +7,8 @@ import win11 from './win11.png';
 
 const Slider = () => {
   return (
-    <div>
-        <Carousel style={{marginBottom : "20px"}}>
+    <>
+        <Carousel className="carousel-lg" style={{marginBottom : "20px"}}>
       <Carousel.Item>
         <img
           className="d-block w-100"
@@ -45,7 +45,7 @@ const Slider = () => {
         </Carousel.Caption>
       </Carousel.Item>
     </Carousel>
-    </div>
+    </>
   )
 }
 

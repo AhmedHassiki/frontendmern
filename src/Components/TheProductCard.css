@@ -1,0 +1,15 @@
+@media (max-width: 768px) {
+  /* Adjust image size for screens up to 768px width */
+  .card-img-responsive {
+    height: auto;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 576px) {
+  /* Adjust image size for screens up to 576px width */
+  .card-img-responsive {
+    height: auto;
+    max-width: 100%;
+  }
+}

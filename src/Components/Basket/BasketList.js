@@ -103,7 +103,7 @@ const BasketList = () => {
   </Col>
   <Col xs={12} md={3}>
   <Form>
-        <h5> Montant total : {total()}DT </h5>
+        <h5> Montant total : {total()} DT </h5>
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Shipping Address</Form.Label>
             <Form.Control
